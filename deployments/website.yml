@@ -1,0 +1,63 @@
+---
+# SPDX-license-identifier: Apache-2.0
+##############################################################################
+# Copyright (c)
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpustats
+  labels:
+    app: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: server
+          image: localhost/electrocucaracha/web:1.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cpustats
+  labels:
+    app: frontend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9001
+      targetPort: 3000
+      name: web
+  selector:
+    app: frontend
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cpustats
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cpustats
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Pods
+      pods:
+        metric:
+          name: processed_requests_per_second
+        target:
+          type: AverageValue
+          averageValue: 750m

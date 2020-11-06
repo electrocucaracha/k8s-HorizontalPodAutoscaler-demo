@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kubernetes Horizontal Pod Autoscaler Demo</title>
+  </head>
+  <body>
+    <h1>CPU statistics:</h1>
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>System</td>
+        <td>{{ .System }}</td>
+      </tr>
+      <tr>
+        <td>Nice</td>
+        <td>{{ .Nice }}</td>
+      </tr>
+      <tr>
+        <td>Guest</td>
+        <td>{{ .Guest }}</td>
+      </tr>
+      <tr>
+        <td>Guest nice</td>
+        <td>{{ .GuestNice }}</td>
+      </tr>
+      <tr>
+        <td>IO Wait</td>
+        <td>{{ .IOWait }}</td>
+      </tr>
+      <tr>
+        <td>IRQ</td>
+        <td>{{ .IRQ }}</td>
+      </tr>
+      <tr>
+        <td>SoftIRQ</td>
+        <td>{{ .SoftIRQ }}</td>
+      </tr>
+      <tr>
+        <td>Steal</td>
+        <td>{{ .Steal }}</td>
+      </tr>
+      <tr>
+        <td>Usage</td>
+        <td>
+          <script>
+            var CpuUsage = {{ .System }} + {{ .User }} + {{ .Nice }} + {{ .Guest }} + {{ .GuestNice }} + {{ .IOWait }} + {{ .IRQ }} + {{ .SoftIRQ }} + {{ .Steal }};
+            var Usage = CpuUsage * 100 / (CpuUsage + {{ .Idle }} )
+            document.write( Usage.toFixed(2) + "%" );
+          </script>
+        </td>
+      </tr>
+    </table> 
+  </body>
+</html>
