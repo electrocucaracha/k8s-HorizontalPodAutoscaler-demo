@@ -60,4 +60,4 @@ spec:
           name: processed_requests_per_second
         target:
           type: AverageValue
-          averageValue: 750m
+          averageValue: 10

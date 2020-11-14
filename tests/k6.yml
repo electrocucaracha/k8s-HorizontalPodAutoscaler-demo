@@ -18,13 +18,13 @@ data:
     import { check, sleep } from "k6";
 
     export let options = {
-      vus: 50,
-      duration: "30s"
+      vus: 150,
+      duration: "45s"
     };
 
     export default function() {
       let res = http.get("http://cpustats.default.svc.cluster.local:9001");
-      sleep(Math.random() * 5);
+      sleep(Math.random() * 2);
       check(res, {
         "status was 200": (r) => r.status == 200,
         "transaction time OK": (r) => r.timings.duration < 200

@@ -111,7 +111,8 @@ done
 for i in $(seq 5); do
     echo "--- $i iteration ---"
     for pod in $(kubectl get po -l app=frontend -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'); do
-        echo "${pod} pod has $(kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/*/processed_requests_per_second?pod=$pod" | jq -r ".items[0].value") requests per second"
+        reqs_per_sec="$(kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/*/processed_requests_per_second?pod=$pod" | jq -r ".items[0].value")"
+        echo "${pod} pod has $(( ${reqs_per_sec%m} / 1000)) requests per second"
     done
     sleep 2
 done
