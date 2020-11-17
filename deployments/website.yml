@@ -23,6 +23,7 @@ spec:
       labels:
         app: frontend
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
         - name: server
           image: localhost/electrocucaracha/web:1.0
