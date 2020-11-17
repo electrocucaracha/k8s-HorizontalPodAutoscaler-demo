@@ -18,4 +18,6 @@ ENV PORT "3000"
 COPY --from=builder /bin/demo_server /demo_server
 COPY demo/index.html /
 
-ENTRYPOINT ["/demo_server"]
+RUN apk add --no-cache tini
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["/demo_server"]
