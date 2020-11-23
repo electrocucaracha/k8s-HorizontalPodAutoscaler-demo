@@ -25,7 +25,7 @@ import (
         "github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var tpl = template.Must(template.ParseFiles("index.html"))
+var tpl = template.Must(template.ParseFiles("web/template/index.html"))
 var (
         reqsProcessed = promauto.NewCounter(prometheus.CounterOpts{
                 Name: "processed_requests_total",
