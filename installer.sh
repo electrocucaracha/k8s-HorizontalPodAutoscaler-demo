@@ -15,7 +15,7 @@ set -o nounset
 
 # Install dependencies
 pkgs=""
-for pkg in podman kind kubectl helm jq; do
+for pkg in podman kind kubectl helm jq make; do
     if ! command -v "$pkg"; then
         pkgs+=" $pkg"
     fi
@@ -27,10 +27,7 @@ fi
 
 # Create website image
 if [ -z "$(podman images electrocucaracha/web:1.0 -q)" ] && [ ! -f /tmp/web.tgz ]; then
-    podman build -t electrocucaracha/web:1.0 .
-    podman image prune --force
-    rm -f /tmp/web.tgz
-    podman save --output /tmp/web.tgz --compress electrocucaracha/web:1.0
+    make tarball
 fi
 
 # Deploy Kubernetes cluster
