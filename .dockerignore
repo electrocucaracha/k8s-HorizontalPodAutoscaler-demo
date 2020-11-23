@@ -1,0 +1,14 @@
+.git/
+.tox/
+.vagrant/
+.dockerignore
+deployments/
+img/
+tests/
+*.sh
+*.md
+*.yml
+Vagrantfile
+Makefile
+Dockerfile
+tox.ini
