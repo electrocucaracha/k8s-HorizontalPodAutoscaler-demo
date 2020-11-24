@@ -60,14 +60,19 @@ fi
 
 # Setup Horizontal Pod Autoscaler components
 if ! heml repo list | grep -q prometheus-community; then
-    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo add prometheus-community \
+        https://prometheus-community.github.io/helm-charts
     helm repo update
 fi
 if ! helm ls | grep -q metric-collector; then
-    helm upgrade --install metric-collector prometheus-community/prometheus-operator --wait -f operator.yml
+    helm upgrade --install metric-collector \
+        prometheus-community/prometheus-operator --wait \
+        -f deployments/operator.yml
 fi
 if ! helm ls | grep -q metric-apiserver; then
-    helm upgrade --install metric-apiserver prometheus-community/prometheus-adapter --wait -f adapter.yml
+    helm upgrade --install metric-apiserver \
+        prometheus-community/prometheus-adapter --wait \
+        -f deployments/adapter.yml
 fi
 cat << EOF | kubectl apply -f -
 apiVersion: monitoring.coreos.com/v1
@@ -85,7 +90,7 @@ spec:
 EOF
 
 # Deploy application
-kubectl apply -f deployments/
+kubectl apply -f deployments/website.yml
 kubectl rollout status deployment cpustats
 
 set +o xtrace
