@@ -17,13 +17,12 @@ FROM build as test
 RUN go test -v ./...
 
 FROM alpine:3.12
-MAINTAINER Victor Morales <electrocucaracha@gmail.com>
 
 ENV PORT "3000"
 
 COPY --from=build /bin/cpustats /cpustats
 COPY web/template/index.html web/template/
 
-RUN apk add --no-cache tini
+RUN apk add --no-cache tini=0.19.0-r0
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/cpustats"]

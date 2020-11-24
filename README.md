@@ -9,11 +9,11 @@ by an application to consume [Kubernetes Horizontal Pod Autoscaler][1]
 feature.
 
 The [k6.yml](tests/k6.yml) provides a traffic simulator which
-generates virtual users, those users perform HTTP requests agains the
+generates virtual users, those users perform HTTP requests against the
 web server. The *Prometheus* instance collects custom metrics which
-aggreated by *Prometheus Adapter* and consumed by *Horizontal Pod
+are aggreated by *Prometheus Adapter* and consumed by *Horizontal Pod
 Autoscaler*, this last component triggers actions to scale out/in
-replicas to distribute the workload.
+replicas in order to distribute the workload.
 
 ![Dashboard](img/diagram.png)
 
