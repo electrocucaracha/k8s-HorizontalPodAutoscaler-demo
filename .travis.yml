@@ -13,19 +13,24 @@ os: linux
 git:
   depth: 1
 dist: bionic
+cache:
+  directories:
+    - /home/travis/.vagrant.d/boxes
+before_install:
+  - sudo apt update
+  - sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 --no-install-recommends curl
 jobs:
   include:
     - name: Lint validation
       install:
         - curl -fsSL http://bit.ly/install_pkg | PKG="tox hadolint" bash
       script:
-        - tox -e lint
-        - bash -c 'shopt -s globstar; shellcheck -x *.sh'
-        - find . -type f -iname "*Dockerfile" | xargs hadolint
+        - tox -v -e lint
+        - find . -type f -iname "*sh" -exec shellcheck -x {} \;
+        - find . -type f -iname "*Dockerfile*" -exec hadolint {} \;
     - name: Ubuntu 20.04 LTS Vagrant validation
       install:
-        - sudo apt update
-        - sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 --no-install-recommends curl qemu
+        - sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 --no-install-recommends qemu
         - curl -fsSL http://bit.ly/initVagrant | PROVIDER=libvirt bash
       script:
         - sudo -E vagrant up
