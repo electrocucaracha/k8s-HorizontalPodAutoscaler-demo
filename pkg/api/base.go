@@ -11,29 +11,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package main
+package api
 
 import (
-	"fmt"
-	"log"
 	"net/http"
-	"os"
 
-	"github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo/pkg/router"
-	"github.com/rs/cors"
+	"github.com/prometheus/client_golang/prometheus"
 )
 
-func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3000"
-	}
+// WrapHandler ensures that Prometheus counters are increased.
+func WrapHandler(apiHandler func(w http.ResponseWriter,
+	r *http.Request), counter prometheus.Counter) (handler func(w http.ResponseWriter, r *http.Request)) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		apiHandler(w, r)
 
-	router := router.CreateRouter()
-
-	fmt.Println("Starting server at " + port)
-
-	if err := http.ListenAndServe(":"+port, cors.Default().Handler(router)); err != nil {
-		log.Fatal("ListenAndServe: ", err)
+		counter.Inc()
 	}
 }
