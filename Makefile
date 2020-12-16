@@ -13,6 +13,7 @@ test:
 	@go test -v ./...
 run:
 	@go run cmd/cpustats/main.go
+.PHONY: build
 build:
 	$(DOCKER) build -t electrocucaracha/web:1.0 .
 	$(DOCKER) image prune --force
@@ -21,7 +22,10 @@ tarball: build
 	$(DOCKER) save --output /tmp/web.tgz --compress electrocucaracha/web:1.0
 integration-test:
 	$(DOCKER) run --rm $$($(DOCKER) build -q --target test .)
-container-run:
-	$(DOCKER) run --rm -p 3000:3000 $$($(DOCKER) build -q .)
+container-start:
+	$(DOCKER) run --publish 3000:3000 --detach --name cpustats $$($(DOCKER) build -q .)
+container-stop:
+	$(DOCKER) kill cpustats
+	$(DOCKER) rm cpustats
 system-test:
 	@vagrant up
