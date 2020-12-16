@@ -20,7 +20,7 @@ build:
 tarball: build
 	@rm -f /tmp/web.tgz
 	$(DOCKER) save --output /tmp/web.tgz --compress electrocucaracha/web:1.0
-integration-test:
+unit-test:
 	$(DOCKER) run --rm $$($(DOCKER) build -q --target test .)
 container-start:
 	$(DOCKER) run --publish 3000:3000 --detach --name cpustats $$($(DOCKER) build -q .)
