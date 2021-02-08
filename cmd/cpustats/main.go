@@ -14,7 +14,6 @@ limitations under the License.
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -24,14 +23,14 @@ import (
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
+	var port string
+	if port = os.Getenv("PORT"); port == "" {
 		port = "3000"
 	}
 
 	router := router.CreateRouter()
 
-	fmt.Println("Starting server at " + port)
+	log.Println("Starting server at " + port)
 
 	if err := http.ListenAndServe(":"+port, cors.Default().Handler(router)); err != nil {
 		log.Fatal("ListenAndServe: ", err)

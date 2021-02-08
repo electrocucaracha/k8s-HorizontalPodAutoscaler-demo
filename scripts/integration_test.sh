@@ -49,15 +49,31 @@ function assert_equals {
     fi
 }
 
+function wait_for_container {
+    local attempt_counter=0
+    local max_attempts=10
+    local container="$1"
+    local msg="$2"
+
+    until ! docker logs "$container" | grep -q "$msg"; do
+        if [ ${attempt_counter} -eq ${max_attempts} ];then
+            echo "Max attempts reached"
+            exit 1
+        fi
+        sleep 1
+        attempt_counter=$((attempt_counter+1))
+    done
+}
+
 # Setup
 if [ -z "$(docker ps --filter "name=cpustats" --format "{{.Names}}")" ] ; then
     info "Starting website container..."
     make container-start --directory="$(dirname "$script_path")" > /dev/null
 fi
-docker logs cpustats | grep -e "Starting server at" > /dev/null
+wait_for_container cpustats "Starting server at"
 curl -f -sLI "$metrics_url" > /dev/null
 assert_non_empty "$(curl -s "$metrics_url")"
-curl -s "$metrics_url" | grep -e "^processed_requests_total" > /dev/null
+curl -s "$metrics_url" | grep -qe "^processed_requests_total"
 
 # Test cases
 info "Validate that processed_requests_total are increased"
