@@ -8,9 +8,20 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+host = RbConfig::CONFIG['host_os']
+
 $no_proxy = ENV['NO_PROXY'] || ENV['no_proxy'] || "127.0.0.1,localhost"
 (1..254).each do |i|
   $no_proxy += ",10.0.2.#{i}"
+end
+
+case host
+when /darwin/
+  mem = `sysctl -n hw.memsize`.to_i / 1024
+when /linux/
+  mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i
+when /mswin|mingw|cygwin/
+  mem = `wmic computersystem Get TotalPhysicalMemory`.split[1].to_i / 1024
 end
 
 Vagrant.configure("2") do |config|
@@ -23,22 +34,35 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision 'shell', privileged: false, inline: <<-SHELL
     set -o errexit
-    cd /vagrant/
-    ./installer.sh | tee ~/installer.log
+    cd /vagrant
+    for script in install deploy check; do
+        ./scripts/$script.sh | tee ~/$script.log
+    done
   SHELL
 
   [:virtualbox, :libvirt].each do |provider|
   config.vm.provider provider do |p|
       p.cpus = ENV["CPUS"] || 2
-      p.memory = ENV['MEMORY'] || 6144
+      p.memory = ENV['MEMORY'] || mem / 1024 / 4
     end
   end
 
   config.vm.provider "virtualbox" do |v|
     v.gui = false
+    v.customize ["modifyvm", :id, "--nictype1", "virtio", "--cableconnected1", "on"]
+    # https://bugs.launchpad.net/cloud-images/+bug/1829625/comments/2
+    v.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+    v.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+    # Enable nested paging for memory management in hardware
+    v.customize ["modifyvm", :id, "--nestedpaging", "on"]
+    # Use large pages to reduce Translation Lookaside Buffers usage
+    v.customize ["modifyvm", :id, "--largepages", "on"]
+    # Use virtual processor identifiers  to accelerate context switching
+    v.customize ["modifyvm", :id, "--vtxvpid", "on"]
   end
 
-  config.vm.provider :libvirt do |v|
+  config.vm.provider :libvirt do |v, override|
+    override.vm.synced_folder './', '/vagrant', type: 'nfs'
     v.random_hostname = true
     v.management_network_address = "10.0.2.0/24"
     v.management_network_name = "administration"

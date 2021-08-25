@@ -18,7 +18,7 @@ data:
     import { check, sleep } from "k6";
 
     export let options = {
-      vus: 150,
+      vus: 250,
       duration: "45s"
     };
 
@@ -31,7 +31,7 @@ data:
       });
     };
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: traffic-simulation

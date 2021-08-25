@@ -7,7 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-DOCKER ?= $(shell which docker 2> /dev/null || which podman 2> /dev/null || echo docker)
+DOCKER_CMD ?= $(shell which docker 2> /dev/null || which podman 2> /dev/null || echo docker)
 
 test:
 	@go test -v ./...
@@ -15,17 +15,24 @@ run:
 	@go run cmd/cpustats/main.go
 .PHONY: build
 build:
-	$(DOCKER) build -t electrocucaracha/web:1.0 .
-	$(DOCKER) image prune --force
-tarball: build
-	@rm -f /tmp/web.tgz
-	$(DOCKER) save --output /tmp/web.tgz --compress electrocucaracha/web:1.0
+	sudo -E $(DOCKER_CMD) build -t electrocucaracha/web:1.0 .
+	sudo -E $(DOCKER_CMD) image prune --force
 unit-test:
-	$(DOCKER) run --rm $$($(DOCKER) build -q --target test .)
+	sudo -E $(DOCKER_CMD) run --rm $$($(DOCKER) build -q --target test .)
 container-start:
-	$(DOCKER) run --publish 3000:3000 --detach --name cpustats $$($(DOCKER) build -q .)
+	sudo -E $(DOCKER_CMD) run --publish 3000:3000 --detach --name cpustats $$($(DOCKER) build -q .)
 container-stop:
-	$(DOCKER) kill cpustats
-	$(DOCKER) rm cpustats
+	sudo -E $(DOCKER_CMD) kill cpustats
+	sudo -E $(DOCKER_CMD) rm cpustats
 system-test:
-	@vagrant up
+	@vagrant up --no-destroy-on-error
+
+.PHONY: lint
+lint:
+	sudo -E $(DOCKER_CMD) run --rm -v $$(pwd):/tmp/lint \
+	-e RUN_LOCAL=true \
+	-e LINTER_RULES_PATH=/ \
+	-e VALIDATE_DOCKERFILE=false \
+	-e VALIDATE_KUBERNETES_KUBEVAL=false \
+	github/super-linter
+	tox -e lint
