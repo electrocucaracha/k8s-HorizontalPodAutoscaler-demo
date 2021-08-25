@@ -9,9 +9,11 @@
 ##############################################################################
 
 set -o pipefail
-set -o xtrace
 set -o errexit
 set -o nounset
+if [[ "${DEBUG:-false}" == "true" ]]; then
+    set -o xtrace
+fi
 
 function print_stats {
     set +o xtrace

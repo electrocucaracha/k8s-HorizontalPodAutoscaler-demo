@@ -9,9 +9,12 @@
 ##############################################################################
 
 set -o pipefail
-set -o xtrace
 set -o errexit
 set -o nounset
+if [[ "${DEBUG:-false}" == "true" ]]; then
+    set -o xtrace
+    export PKG_DEBUG=true
+fi
 
 # Install dependencies
 pkgs=""
