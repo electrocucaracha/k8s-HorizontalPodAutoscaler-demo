@@ -37,8 +37,9 @@ jobs:
       DEBUG: true
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: ./scripts/install.sh
       - name: Deploy services
-        run: |
-          ./scripts/install.sh
-          ./scripts/deploy.sh
-          ./scripts/check.sh
+        run: ./scripts/deploy.sh
+      - name: Deploy demo app
+        run: ./scripts/check.sh

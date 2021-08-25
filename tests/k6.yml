@@ -19,7 +19,7 @@ data:
 
     export let options = {
       vus: 250,
-      duration: "45s"
+      duration: "2m"
     };
 
     export default function() {

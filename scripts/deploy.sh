@@ -28,13 +28,12 @@ function print_stats {
             echo "Kubernetes Resources ($namespace):"
             kubectl get all -n "$namespace" -o wide
         done
-        echo "NGINX controller logs:"
-        kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx -l app.kubernetes.io/component=controller
         echo "Kubernetes Pods:"
         kubectl describe pods
         echo "Kubernetes Nodes:"
         kubectl describe nodes
     fi
+    exit 1
 }
 
 trap print_stats ERR
