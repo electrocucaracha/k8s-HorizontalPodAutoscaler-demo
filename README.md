@@ -1,5 +1,4 @@
 # Kubernetes Horizontal Pod Autoscaler
-[![Build Status](https://api.travis-ci.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo.svg)](https://travis-ci.com/github/electrocucaracha/k8s-HorizontalPodAutoscaler-demo)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Summary
@@ -26,12 +25,12 @@ dependencies and plugins required for this project. That script
 supports two Virtualization providers (Libvirt and VirtualBox) which
 are determine by the **PROVIDER** environment variable.
 
-    $ curl -fsSL http://bit.ly/initVagrant | PROVIDER=libvirt bash
+    curl -fsSL http://bit.ly/initVagrant | PROVIDER=libvirt bash
 
 Once Vagrant is installed, it's possible to provision a Virtual
 Machine using the following instructions:
 
-    $ vagrant up
+    vagrant up
 
 The provisioning process will take some time to install all
 dependencies required by this project and perform a Kubernetes
