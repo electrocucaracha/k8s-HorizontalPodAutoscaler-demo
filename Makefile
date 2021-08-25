@@ -18,9 +18,9 @@ build:
 	sudo -E $(DOCKER_CMD) build -t electrocucaracha/web:1.0 .
 	sudo -E $(DOCKER_CMD) image prune --force
 unit-test:
-	sudo -E $(DOCKER_CMD) run --rm $$($(DOCKER) build -q --target test .)
+	sudo -E $(DOCKER_CMD) run --rm $$($(DOCKER_CMD) build -q --target test .)
 container-start:
-	sudo -E $(DOCKER_CMD) run --publish 3000:3000 --detach --name cpustats $$($(DOCKER) build -q .)
+	sudo -E $(DOCKER_CMD) run --publish 3000:3000 --detach --name cpustats $$($(DOCKER_CMD) build -q .)
 container-stop:
 	sudo -E $(DOCKER_CMD) kill cpustats
 	sudo -E $(DOCKER_CMD) rm cpustats

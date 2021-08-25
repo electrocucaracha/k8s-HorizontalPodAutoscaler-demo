@@ -22,7 +22,16 @@ on:
       - submitted
 
 jobs:
-  check-ci-baremetal:
+  functional-test:
+    runs-on: ubuntu-20.04
+    env:
+      DEBUG: true
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run assertions
+        run: |
+          ./scripts/integration_test.sh
+  system-test:
     runs-on: ubuntu-20.04
     env:
       DEBUG: true

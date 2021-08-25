@@ -60,15 +60,21 @@ function wait_for_container {
             echo "Max attempts reached"
             exit 1
         fi
-        sleep 1
         attempt_counter=$((attempt_counter+1))
+        sleep $((attempt_counter*2))
     done
+}
+
+function cleanup {
+    info "Destroying website container"
+    make container-stop --directory="$(dirname "$script_path")"/ > /dev/null
 }
 
 # Setup
 if [ -z "$(docker ps --filter "name=cpustats" --format "{{.Names}}")" ] ; then
     info "Starting website container..."
     make container-start --directory="$(dirname "$script_path")" > /dev/null
+    trap cleanup EXIT
 fi
 wait_for_container cpustats "Starting server at"
 curl -f -sLI "$metrics_url" > /dev/null
@@ -84,7 +90,3 @@ else
     curl -s "$local_url" > /dev/null
 fi
 assert_equals "$(curl -s "$metrics_url" | grep "^processed_requests_total" | awk '{ print $2}')" "1"
-
-# Teardown
-info "Destroying website container"
-make container-stop --directory="$(dirname "$script_path")"/ > /dev/null
