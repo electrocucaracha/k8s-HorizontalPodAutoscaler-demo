@@ -1,0 +1,36 @@
+---
+# SPDX-license-identifier: Apache-2.0
+##############################################################################
+# Copyright (c) 2021
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+
+name: Check End-to-End (Scheduled)
+# yamllint disable-line rule:truthy
+on:
+  schedule:
+    - cron: '0 0 * * 5'
+
+jobs:
+  check-e2e:
+    runs-on: macos-10.15
+    env:
+      VAGRANT_DISABLE_VBOXSYMLINKCREATE: 1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Vagrant boxes
+        uses: actions/cache@v2
+        with:
+          path: ~/.vagrant.d/boxes
+          key: ${{ runner.os }}-vagrant-${{ hashFiles('Vagrantfile') }}
+          restore-keys: |
+            ${{ runner.os }}-vagrant-
+      - name: Replace shorten links
+        run: |
+          find . -type f -not -path ./.github/\* -exec sed -i '.bak' 's|http://bit.ly/install_pkg|https://raw.githubusercontent.com/electrocucaracha/pkg-mgr_scripts/master/install.sh|g' {} \;
+          find . -type f -name "*.bak" -delete
+      - name: Deploy services
+        run: vagrant up
