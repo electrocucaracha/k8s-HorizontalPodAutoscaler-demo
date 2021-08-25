@@ -1,3 +1,4 @@
 .vagrant/
 .tox/
 .*.swp
+super-linter.log

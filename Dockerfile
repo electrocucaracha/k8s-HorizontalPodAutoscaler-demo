@@ -20,9 +20,10 @@ FROM alpine:3.12
 
 ENV PORT "3000"
 
-COPY --from=build /bin/cpustats /cpustats
+WORKDIR /opt/cpustats
+COPY --from=build /bin/cpustats ./server
 COPY web/template/index.html web/template/
 
 RUN apk add --no-cache tini=0.19.0-r0
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["/cpustats"]
+CMD ["./server"]
