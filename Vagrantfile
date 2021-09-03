@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox
 
   config.vm.box = "generic/ubuntu2004"
+  config.vm.box_version = "3.2.20"
   config.vm.box_check_update = false
   config.vm.synced_folder './', '/vagrant'
 
