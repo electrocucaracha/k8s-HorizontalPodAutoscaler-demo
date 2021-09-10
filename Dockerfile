@@ -1,4 +1,4 @@
-FROM golang:1.15-alpine3.12 as build
+FROM golang:1.17-alpine3.14 as build
 
 WORKDIR /go/src/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo
 ENV GO111MODULE "on"
@@ -16,7 +16,7 @@ RUN go build -v -o /bin ./...
 FROM build as test
 RUN go test -v ./...
 
-FROM alpine:3.12
+FROM alpine:3.14
 
 ENV PORT "3000"
 
