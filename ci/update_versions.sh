@@ -46,5 +46,5 @@ nodes:
 EOT
 
 if command -v go > /dev/null; then
-    go mod tidy -go="$(curl -s https://golang.org/VERSION?m=text | sed 's/go//;s/\..$//')"
+    go mod tidy -go="$(curl -sL https://golang.org/VERSION?m=text | sed 's/go//;s/\..$//')"
 fi
