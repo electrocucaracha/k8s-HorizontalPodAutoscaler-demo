@@ -17,16 +17,8 @@ if [[ "${DEBUG:-false}" == "true" ]]; then
 fi
 
 # Install dependencies
-pkgs=""
-for pkg in docker kind kubectl helm jq make; do
-    if ! command -v "$pkg"; then
-        pkgs+=" $pkg"
-    fi
-done
-if [ -n "$pkgs" ]; then
-    # NOTE: Shorten link -> https://github.com/electrocucaracha/pkg-mgr_scripts
-    curl -fsSL http://bit.ly/install_pkg | PKG=$pkgs bash
-fi
+# NOTE: Shorten link -> https://github.com/electrocucaracha/pkg-mgr_scripts
+curl -fsSL http://bit.ly/install_pkg | PKG_COMMANDS_LIST="docker,kind,kubectl,helm,jq,make" PKG_KREW_PLUGINS_LIST=" " bash
 
 # Provision a K8s cluster
 if ! sudo kind get clusters | grep -q kind; then
@@ -37,11 +29,7 @@ if ! sudo kind get clusters | grep -q kind; then
 fi
 
 # Setup Horizontal Pod Autoscaler components
-if ! helm repo list | grep -q prometheus-community; then
-    helm repo add prometheus-community \
-        https://prometheus-community.github.io/helm-charts
-    helm repo update
-fi
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 if ! helm ls | grep -q metric-collector; then
     helm upgrade --install metric-collector \
         prometheus-community/prometheus-operator --wait \
