@@ -32,7 +32,7 @@ fi
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 if ! helm ls | grep -q metric-collector; then
     helm upgrade --install metric-collector \
-        prometheus-community/prometheus-operator --wait \
+        prometheus-community/kube-prometheus-stack --wait \
         -f ./deployments/operator.yml
 fi
 if ! helm ls | grep -q metric-apiserver; then
