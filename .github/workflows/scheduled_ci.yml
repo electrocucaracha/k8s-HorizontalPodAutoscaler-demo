@@ -8,11 +8,12 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-name: Check End-to-End (Scheduled)
+name: Scheduled End-to-End verification
 # yamllint disable-line rule:truthy
 on:
   schedule:
     - cron: '0 0 * * 5'
+  workflow_dispatch:
 
 jobs:
   check-e2e:
