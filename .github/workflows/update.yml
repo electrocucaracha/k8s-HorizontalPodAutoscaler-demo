@@ -25,6 +25,8 @@ jobs:
         with:
           EXECUTE_COMMANDS: |
             ./ci/update_versions.sh
+            pip install -U pip-tools
+            pip-compile --output-file=tests/testinfra/test-requirements.txt --upgrade tests/testinfra/test-requirements.in
           COMMIT_MESSAGE: 'Upgrade versions files'
           COMMIT_NAME: 'electrocucaracha bot'
           PR_BRANCH_NAME: "versions-update-${PR_ID}"
