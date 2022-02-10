@@ -24,6 +24,8 @@ jobs:
       - uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
+            pip install -U pip-tools
+            pip-compile --output-file=tests/testinfra/test-requirements.txt --upgrade tests/testinfra/test-requirements.in
             ./ci/update_versions.sh
           COMMIT_MESSAGE: 'Upgrade versions files'
           COMMIT_NAME: 'electrocucaracha bot'

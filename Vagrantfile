@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision 'shell', privileged: false, inline: <<-SHELL
     set -o errexit
     cd /vagrant
-    for script in install deploy check; do
+    for script in install deploy; do
         ./scripts/$script.sh | tee ~/$script.log
     done
   SHELL

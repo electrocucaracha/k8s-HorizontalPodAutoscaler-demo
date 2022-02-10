@@ -2,3 +2,4 @@
 .tox/
 .*.swp
 super-linter.log
+*.pyc

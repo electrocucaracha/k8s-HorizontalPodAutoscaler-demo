@@ -1,0 +1,2 @@
+pytest-testinfra # Apache-2.0
+paramiko # LGPL
