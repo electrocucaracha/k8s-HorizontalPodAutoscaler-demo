@@ -8,11 +8,12 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-name: Check End-to-End (Scheduled)
+name: Scheduled End-to-End verification
 # yamllint disable-line rule:truthy
 on:
   schedule:
     - cron: '0 0 * * 5'
+  workflow_dispatch:
 
 jobs:
   check-e2e:
@@ -34,3 +35,12 @@ jobs:
           find . -type f -name "*.bak" -delete
       - name: Deploy services
         run: vagrant up
+      - uses: actions/setup-python@v2
+      - name: Install testinfra dependencies
+        run: pip install -r tests/testinfra/test-requirements.txt
+      - name: Verify services
+        run: |
+          vagrant ssh-config > .vagrant/ssh-config
+          py.test -v --hosts=default --ssh-config=.vagrant/ssh-config ./tests/testinfra/test.py
+      - name: Run traffic simulator
+        run: vagrant ssh -- "cd /vagrant; scripts/check.sh"

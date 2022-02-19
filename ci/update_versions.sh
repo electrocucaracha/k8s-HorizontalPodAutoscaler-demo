@@ -43,6 +43,11 @@ nodes:
     image: kindest/node:v$last_version
 EOT
 
-if command -v go; then
-    go mod tidy
+if command -v go > /dev/null; then
+    go mod tidy -go="$(curl -sL https://golang.org/VERSION?m=text | sed 's/go//;s/\..$//')"
+    GOPATH=$(go env GOPATH)
+    if [ ! -f "$GOPATH/bin/cyclonedx-gomod" ]; then
+        go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
+    fi
+    "$GOPATH/bin/cyclonedx-gomod" mod -licenses -json -output mod_k8s-HorizontalPodAutoscaler-demo.bom.json
 fi

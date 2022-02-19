@@ -8,13 +8,14 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-name: Check Lastest CI versions
+name: Scheduled Versions verification
 # yamllint disable-line rule:truthy
 on:
   schedule:
     - cron: '0 0 * * *'
   pull_request:
     types: [opened, synchronize, reopened, closed]
+  workflow_dispatch:
 
 jobs:
   check-versions:
@@ -25,6 +26,8 @@ jobs:
         with:
           EXECUTE_COMMANDS: |
             ./ci/update_versions.sh
+            pip install -U pip-tools
+            #pip-compile --output-file=tests/testinfra/test-requirements.txt --upgrade tests/testinfra/test-requirements.in
           COMMIT_MESSAGE: 'Upgrade versions files'
           COMMIT_NAME: 'electrocucaracha bot'
           PR_BRANCH_NAME: "versions-update-${PR_ID}"
