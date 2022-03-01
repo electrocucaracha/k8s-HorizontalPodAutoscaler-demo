@@ -35,7 +35,7 @@ jobs:
           find . -type f -name "*.bak" -delete
       - name: Deploy services
         run: vagrant up
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
       - name: Install testinfra dependencies
         run: pip install -r tests/testinfra/test-requirements.txt
       - name: Verify services
