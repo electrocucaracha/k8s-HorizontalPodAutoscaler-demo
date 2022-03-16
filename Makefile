@@ -32,7 +32,6 @@ lint:
 	sudo -E $(DOCKER_CMD) run --rm -v $$(pwd):/tmp/lint \
 	-e RUN_LOCAL=true \
 	-e LINTER_RULES_PATH=/ \
-	-e VALIDATE_DOCKERFILE=false \
 	-e VALIDATE_KUBERNETES_KUBEVAL=false \
 	github/super-linter
 	tox -e lint
