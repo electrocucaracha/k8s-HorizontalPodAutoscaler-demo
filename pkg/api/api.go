@@ -22,18 +22,18 @@ import (
 )
 
 // IndexHandler reads CPU statistics on Linux distros and displays them on a web page.
-func IndexHandler(w http.ResponseWriter, r *http.Request) {
+func IndexHandler(writer http.ResponseWriter, r *http.Request) {
 	stat, err := linuxproc.ReadStat("/proc/stat")
 	if err != nil {
 		log.Printf("Server can't read CPU stats")
-		http.Error(w, "Server can't read CPU stats", http.StatusInternalServerError)
+		http.Error(writer, "Server can't read CPU stats", http.StatusInternalServerError)
 	}
 
 	if stat != nil {
 		tpl := template.Must(template.ParseFiles("web/template/index.html"))
-		if err := tpl.Execute(w, stat.CPUStatAll); err != nil {
+		if err := tpl.Execute(writer, stat.CPUStatAll); err != nil {
 			log.Printf("CPU stats can't be displayed")
-			http.Error(w, "CPU stats can't be displayed", http.StatusInternalServerError)
+			http.Error(writer, "CPU stats can't be displayed", http.StatusInternalServerError)
 		}
 	}
 }

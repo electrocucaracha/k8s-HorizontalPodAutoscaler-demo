@@ -22,11 +22,7 @@ import (
 	"github.com/rs/cors"
 )
 
-var (
-	version = "dev"
-	commit  = "n/a"
-	date    = "n/a"
-)
+var version = "dev"
 
 func main() {
 	var port string
@@ -38,8 +34,6 @@ func main() {
 
 	log.Println("Starting server at " + port)
 	log.Println("version: " + version)
-	log.Println("commit: " + commit)
-	log.Println("date: " + date)
 
 	if err := http.ListenAndServe(":"+port, cors.Default().Handler(router)); err != nil {
 		log.Fatal("ListenAndServe: ", err)
