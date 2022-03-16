@@ -18,7 +18,7 @@ data:
     import { check, sleep } from "k6";
 
     export let options = {
-      vus: 250,
+      vus: 500,
       duration: "2m"
     };
 
@@ -43,6 +43,9 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: simulator
         spec:
           containers:
             - name: k6-test

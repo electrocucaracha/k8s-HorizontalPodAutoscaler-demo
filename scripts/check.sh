@@ -35,8 +35,9 @@ function print_stats {
 
 trap print_stats ERR
 
+echo "Wait for Processed requests per second data"
 attempt_counter=0
-max_attempts=12
+max_attempts=18
 until kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1" | jq -r '.resources[].name' | grep -q pods/processed_requests_per_second; do
     if [ ${attempt_counter} -eq ${max_attempts} ];then
         echo "Max attempts reached"
@@ -45,23 +46,30 @@ until kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1" | jq -r '.resource
     attempt_counter=$((attempt_counter+1))
     sleep $((attempt_counter*2))
 done
+echo "$attempt_counter attempt(s)"
 
 # Run Traffic emulator
+kubectl get deployments cpustats
 kubectl apply -f tests/
+sleep 30
 trap 'kubectl delete -f tests/' EXIT
 
 # Wait for scaling up
+echo "Wait for scaling containers up"
 attempt_counter=0
-until [ "$(kubectl get deployments/cpustats  -o jsonpath='{.spec.replicas}')" -gt "1" ]; do
+until [ "$(kubectl get deployments/cpustats -o jsonpath='{.spec.replicas}')" -gt "1" ]; do
     if [ ${attempt_counter} -eq ${max_attempts} ];then
+        kubectl logs -l app=simulator
+        print_stats
         echo "Max attempts reached"
         exit 1
     fi
     attempt_counter=$((attempt_counter+1))
     sleep $((attempt_counter*1))
 done
+echo "$attempt_counter attempt(s)"
 
-for i in $(seq 10); do
+for i in $(seq 5); do
     echo "--- $i iteration ---"
     for pod in $(kubectl get po -l app=frontend -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'); do
         reqs_per_sec="$(kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/*/processed_requests_per_second?pod=$pod" | jq -r ".items[0].value")"
@@ -69,5 +77,6 @@ for i in $(seq 10); do
     done
     sleep 3
 done
+kubectl get deployments cpustats
 
 echo "CPU stats - Replicas $(kubectl get deployments/cpustats  -o jsonpath='{.spec.replicas}')"
