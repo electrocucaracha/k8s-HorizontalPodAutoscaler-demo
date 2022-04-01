@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  "serialNumber": "urn:uuid:6f6c7941-d679-4241-863c-fe03b08222fa",
+  "serialNumber": "urn:uuid:427d3b03-6177-4f38-8cb6-6c0213bc5477",
   "version": 1,
   "metadata": {
-    "timestamp": "2022-02-18T13:03:53-08:00",
+    "timestamp": "2022-04-01T00:40:46Z",
     "tools": [
       {
         "vendor": "CycloneDX",
@@ -13,23 +13,23 @@
         "hashes": [
           {
             "alg": "MD5",
-            "content": "f984b5556bb125131b59d0de38123561"
+            "content": "7e8b1f87efd7211ee5b2a3c8744515a3"
           },
           {
             "alg": "SHA-1",
-            "content": "ec9b002bbb9bf787647ff41e6cf37ecd9726b64c"
+            "content": "3d781c17bf763e10c1676da47d1edd9a8976d107"
           },
           {
             "alg": "SHA-256",
-            "content": "8c86fba02c4e548b5b9a9d766446149644a42ac8fd1298c25ae6865ee3c3cfa2"
+            "content": "37620f360984832971d6ce3b8eeae50d74a9f81755c4546c92d4411ff9b8fabf"
           },
           {
             "alg": "SHA-384",
-            "content": "723f0b04504ddbba19db8a3650a52713ac7079d7c11c549be7b2ee02b4a9a6a2cefa94fe29aa40f51e11986af1125da4"
+            "content": "f5286cbfca5eb78ae68dda4c7f8d429cdfaed0df91180d031aa79665f24b0576e1c403a1df99643543f3d9e5333c1e56"
           },
           {
             "alg": "SHA-512",
-            "content": "8eacb13ba6fe725377dd9b3e0824c3cac6968161962e57d076e13e9fcce58cfa46644c074a67751d9fb1a1bdfa08d26fda8da1e4dabccb29b3551899554294d9"
+            "content": "abb354e6dd44bd35f83ca69a82ed5766c1177e96d0af25864fe19712ce3c58cde62883e138d1b09ef53e9412c38a0f5c395d079c3b8af8b4fa5a7748ed46b822"
           }
         ],
         "externalReferences": [
@@ -45,11 +45,11 @@
       }
     ],
     "component": {
-      "bom-ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v1.0.1-0.20210910174030-c82691496dfc?type=module",
+      "bom-ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20220322022657-b9f1b1724b2a?type=module",
       "type": "application",
       "name": "github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo",
-      "version": "v1.0.1-0.20210910174030-c82691496dfc",
-      "purl": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v1.0.1-0.20210910174030-c82691496dfc?type=module",
+      "version": "v0.0.0-20220322022657-b9f1b1724b2a",
+      "purl": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20220322022657-b9f1b1724b2a?type=module",
       "externalReferences": [
         {
           "url": "https://github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo",
@@ -436,7 +436,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v1.0.1-0.20210910174030-c82691496dfc?type=module",
+      "ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20220322022657-b9f1b1724b2a?type=module",
       "dependsOn": [
         "pkg:golang/github.com/c9s/goprocinfo@v0.0.0-20210130143923-c95fcf8c64a8?type=module",
         "pkg:golang/github.com/gorilla/mux@v1.8.0?type=module",
