@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine3.14 as build
+FROM golang:1.18-alpine3.15 as build
 
 WORKDIR /go/src/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo
 ENV GO111MODULE "on"
@@ -7,7 +7,7 @@ ENV GOOS "linux"
 ENV GOARCH "amd64"
 ENV GOBIN=/bin
 
-RUN apk add --no-cache git=2.32.0-r0
+RUN apk add --no-cache git=2.34.2-r0
 COPY go.mod go.sum ./
 COPY ./internal/imports ./internal/imports
 RUN go build ./internal/imports
@@ -17,7 +17,7 @@ RUN go build -v -o /bin --ldflags "-X 'main.version=$(git describe --tags --alwa
 FROM build as test
 RUN go test -v ./...
 
-FROM alpine:3.14
+FROM alpine:3.15
 
 ENV PORT "3000"
 
