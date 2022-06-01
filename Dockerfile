@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine3.15 as build
+FROM alpine:3.16.0
 
 WORKDIR /go/src/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo
 ENV GO111MODULE "on"
