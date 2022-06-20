@@ -1,4 +1,5 @@
 # Kubernetes Horizontal Pod Autoscaler
+<!-- markdown-link-check-disable-next-line -->
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Summary

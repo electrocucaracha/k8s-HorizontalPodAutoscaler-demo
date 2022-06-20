@@ -22,7 +22,7 @@ import (
 // WrapHandler ensures that Prometheus counters are increased.
 func WrapHandler(apiHandler func(w http.ResponseWriter,
 	r *http.Request), counter prometheus.Counter,
-) (handler func(w http.ResponseWriter, r *http.Request)) {
+) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		apiHandler(w, r)
 

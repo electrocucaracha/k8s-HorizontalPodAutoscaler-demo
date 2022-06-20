@@ -29,7 +29,7 @@ type Router struct {
 }
 
 // CreateRouter initializes a custom router and their counters.
-func CreateRouter() (router *Router) {
+func CreateRouter() *Router {
 	reqsProcessed := promauto.NewCounter(prometheus.CounterOpts{
 		Name:        "processed_requests_total",
 		Help:        "CPU stats API number of processed requests",
@@ -38,9 +38,10 @@ func CreateRouter() (router *Router) {
 		ConstLabels: nil,
 	})
 
-	router = &Router{
+	router := &Router{
 		mux.NewRouter().StrictSlash(true),
 	}
+
 	router.HandleFunc("/", api.WrapHandler(api.IndexHandler, reqsProcessed)).Methods(http.MethodGet)
 	router.Handle("/metrics", promhttp.Handler())
 
