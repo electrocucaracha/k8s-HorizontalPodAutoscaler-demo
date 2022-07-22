@@ -21,7 +21,7 @@ function print_stats {
     if command -v kubectl; then
         for namespace in default ingress-nginx; do
             echo "Kubernetes Events ($namespace):"
-            kubectl get events -n "$namespace" --sort-by=".metadata.managedFields[0].time"
+            kubectl alpha events -n "$namespace"
             echo "Kubernetes Resources ($namespace):"
             kubectl get all -n "$namespace" -o wide
         done
