@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=tests/testinfra/test-requirements.txt tests/testinfra/test-requirements.in
 #
-attrs==21.4.0
+attrs==22.1.0
     # via pytest
 bcrypt==3.2.2
     # via paramiko
