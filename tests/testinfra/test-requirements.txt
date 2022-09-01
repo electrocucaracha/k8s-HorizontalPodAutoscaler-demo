@@ -6,11 +6,10 @@
 #
 attrs==22.1.0
     # via pytest
-bcrypt==3.2.2
+bcrypt==4.0.0
     # via paramiko
 cffi==1.15.1
     # via
-    #   bcrypt
     #   cryptography
     #   pynacl
 cryptography==37.0.4
