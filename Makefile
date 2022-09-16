@@ -35,3 +35,8 @@ lint:
 	-e VALIDATE_KUBERNETES_KUBEVAL=false \
 	github/super-linter
 	tox -e lint
+
+.PHONY: fmt
+fmt:
+	sudo -E $(DOCKER_CMD) run --rm -u "$$(id -u):$$(id -g)" \
+	-v "$$(pwd):/mnt" -w /mnt mvdan/shfmt -l -w -i 4 -s .

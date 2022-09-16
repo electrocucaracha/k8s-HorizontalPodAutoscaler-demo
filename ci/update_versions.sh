@@ -14,7 +14,7 @@ set -o nounset
 
 last_version=$(curl -sL https://registry.hub.docker.com/v2/repositories/kindest/node/tags | python -c 'import json,sys,re;versions=[obj["name"][1:] for obj in json.load(sys.stdin)["results"] if re.match("^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$",obj["name"])];print("\n".join(versions))' | uniq | sort -rn | head -n 1)
 
-cat << EOT > scripts/kind-config.yml
+cat <<EOT >scripts/kind-config.yml
 ---
 # SPDX-license-identifier: Apache-2.0
 ##############################################################################
@@ -43,7 +43,7 @@ nodes:
     image: kindest/node:v$last_version
 EOT
 
-if command -v go > /dev/null; then
+if command -v go >/dev/null; then
     go mod tidy -go="$(curl -sL https://golang.org/VERSION?m=text | sed 's/go//;s/\..$//')"
     GOPATH=$(go env GOPATH)
     if [ ! -f "$GOPATH/bin/cyclonedx-gomod" ]; then

@@ -17,7 +17,10 @@ fi
 
 local_url="http://127.0.0.1:3000"
 metrics_url="$local_url/metrics"
-script_path=$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)
+script_path=$(
+    cd "$(dirname "$0")" >/dev/null 2>&1
+    pwd -P
+)
 
 function info {
     _print_msg "INFO" "$1"
@@ -56,28 +59,28 @@ function wait_for_container {
     local msg="$2"
 
     until ! docker logs "$container" | grep -q "$msg"; do
-        if [ ${attempt_counter} -eq ${max_attempts} ];then
+        if [ ${attempt_counter} -eq ${max_attempts} ]; then
             echo "Max attempts reached"
             exit 1
         fi
-        attempt_counter=$((attempt_counter+1))
-        sleep $((attempt_counter*2))
+        attempt_counter=$((attempt_counter + 1))
+        sleep $((attempt_counter * 2))
     done
 }
 
 function cleanup {
     info "Destroying website container"
-    make container-stop --directory="$(dirname "$script_path")"/ > /dev/null
+    make container-stop --directory="$(dirname "$script_path")"/ >/dev/null
 }
 
 # Setup
-if [ -z "$(docker ps --filter "name=cpustats" --format "{{.Names}}")" ] ; then
+if [ -z "$(docker ps --filter "name=cpustats" --format "{{.Names}}")" ]; then
     info "Starting website container..."
-    make container-start --directory="$(dirname "$script_path")" > /dev/null
+    make container-start --directory="$(dirname "$script_path")" >/dev/null
     trap cleanup EXIT
 fi
 wait_for_container cpustats "Starting server at"
-curl -f -sLI "$metrics_url" > /dev/null
+curl -f -sLI "$metrics_url" >/dev/null
 assert_non_empty "$(curl -s "$metrics_url")"
 curl -s "$metrics_url" | grep -qe "^processed_requests_total"
 
@@ -87,6 +90,6 @@ assert_equals "$(curl -s "$metrics_url" | grep "^processed_requests_total" | awk
 if [ "${DEBUG:-false}" == "true" ]; then
     curl -s "$local_url"
 else
-    curl -s "$local_url" > /dev/null
+    curl -s "$local_url" >/dev/null
 fi
 assert_equals "$(curl -s "$metrics_url" | grep "^processed_requests_total" | awk '{ print $2}')" "1"

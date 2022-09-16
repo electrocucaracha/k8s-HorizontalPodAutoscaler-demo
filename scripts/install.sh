@@ -11,7 +11,7 @@
 set -o pipefail
 set -o errexit
 set -o nounset
-if [[ "${DEBUG:-false}" == "true" ]]; then
+if [[ ${DEBUG:-false} == "true" ]]; then
     set -o xtrace
     export PKG_DEBUG=true
 fi
@@ -40,7 +40,7 @@ if ! helm ls | grep -q metric-apiserver; then
         prometheus-community/prometheus-adapter --wait \
         -f ./deployments/adapter.yml
 fi
-cat << EOF | kubectl apply -f -
+cat <<EOF | kubectl apply -f -
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
