@@ -1,4 +1,4 @@
-FROM alpine:3.16.1
+FROM golang:1.19-alpine3.16 as build
 
 WORKDIR /go/src/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo
 ENV GO111MODULE "on"
@@ -7,7 +7,7 @@ ENV GOOS "linux"
 ENV GOARCH "amd64"
 ENV GOBIN=/bin
 
-RUN apk add --no-cache git=2.34.4-r0
+RUN apk add --no-cache git=2.36.2-r0
 COPY go.mod go.sum ./
 COPY ./internal/imports ./internal/imports
 RUN go build ./internal/imports
