@@ -23,4 +23,4 @@ kubeadmConfigPatches:
         horizontal-pod-autoscaler-downscale-stabilization: "15s"
 nodes:
   - role: control-plane
-    image: kindest/node:v1.25.0-beta.0
+    image: kindest/node:v1.25.2
