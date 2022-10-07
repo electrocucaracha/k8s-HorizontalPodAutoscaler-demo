@@ -38,6 +38,8 @@ jobs:
       - name: Deploy services
         run: vagrant up
       - uses: actions/setup-python@v4
+        with:
+          python-version: '^3.10'
       - name: Install testinfra dependencies
         run: pip install -r tests/testinfra/test-requirements.txt
       - name: Verify services
