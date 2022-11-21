@@ -18,7 +18,7 @@ fi
 
 # Install dependencies
 # NOTE: Shorten link -> https://github.com/electrocucaracha/pkg-mgr_scripts
-curl -fsSL http://bit.ly/install_pkg | PKG_COMMANDS_LIST="docker,kind,kubectl,helm,jq,make" PKG_KREW_PLUGINS_LIST=" " bash
+curl -fsSL http://bit.ly/install_pkg | PKG_UPDATE=true PKG_COMMANDS_LIST="docker,kind,kubectl,helm,jq,make" PKG_KREW_PLUGINS_LIST=" " bash
 
 # Provision a K8s cluster
 if ! sudo kind get clusters | grep -q kind; then
