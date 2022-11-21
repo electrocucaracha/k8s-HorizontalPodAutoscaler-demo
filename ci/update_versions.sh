@@ -41,6 +41,9 @@ kubeadmConfigPatches:
 nodes:
   - role: control-plane
     image: kindest/node:v$last_version
+    extraPortMappings:
+      - containerPort: 30001
+        hostPort: 9001
 EOT
 
 if command -v go >/dev/null; then

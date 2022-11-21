@@ -27,6 +27,9 @@ spec:
       containers:
         - name: server
           image: electrocucaracha/web:1.0
+          ports:
+            - containerPort: 3000
+              name: http-web
 ---
 apiVersion: v1
 kind: Service
@@ -35,11 +38,11 @@ metadata:
   labels:
     app: frontend
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 9001
-      targetPort: 3000
-      name: web
+      nodePort: 30001
+      targetPort: http-web
   selector:
     app: frontend
 ---
