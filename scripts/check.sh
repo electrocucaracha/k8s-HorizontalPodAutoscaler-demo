@@ -30,7 +30,6 @@ function print_stats {
         echo "Kubernetes Nodes:"
         kubectl describe nodes
     fi
-    exit 1
 }
 
 trap print_stats ERR
