@@ -16,6 +16,9 @@ if [[ ${DEBUG:-false} == "true" ]]; then
     export PKG_DEBUG=true
 fi
 
+kube_prometheus_stack_version=41.7.3
+prometheus_adapter_version=3.4.1
+
 # Install dependencies
 # NOTE: Shorten link -> https://github.com/electrocucaracha/pkg-mgr_scripts
 curl -fsSL http://bit.ly/install_pkg | PKG_UPDATE=true PKG_COMMANDS_LIST="docker,kind,kubectl,helm,jq,make" PKG_KREW_PLUGINS_LIST=" " bash
@@ -33,12 +36,12 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 if ! helm ls | grep -q metric-collector; then
     helm upgrade --install metric-collector \
         prometheus-community/kube-prometheus-stack --wait \
-        -f ./deployments/operator.yml
+        -f ./deployments/operator.yml --version "$kube_prometheus_stack_version"
 fi
 if ! helm ls | grep -q metric-apiserver; then
     helm upgrade --install metric-apiserver \
         prometheus-community/prometheus-adapter --wait \
-        -f ./deployments/adapter.yml
+        -f ./deployments/adapter.yml --version "$prometheus_adapter_version"
 fi
 cat <<EOF | kubectl apply -f -
 apiVersion: monitoring.coreos.com/v1

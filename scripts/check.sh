@@ -38,7 +38,7 @@ trap print_stats ERR
 echo "Wait for Processed requests per second data"
 attempt_counter=0
 max_attempts=18
-until kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1" | jq -r '.resources[].name' | grep -q pods/processed_requests_per_second; do
+until kubectl get --raw="/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/deployment/cpustats/processed_requests_per_second"; do
     if [ ${attempt_counter} -eq ${max_attempts} ]; then
         echo "Max attempts reached"
         exit 1
