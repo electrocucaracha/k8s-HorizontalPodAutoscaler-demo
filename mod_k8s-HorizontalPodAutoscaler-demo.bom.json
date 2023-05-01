@@ -1,35 +1,36 @@
 {
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  "serialNumber": "urn:uuid:d55225a2-73cc-41fd-88d5-30fb2c505bb2",
+  "serialNumber": "urn:uuid:5089744e-8aab-4e23-9589-276d46f70f70",
   "version": 1,
   "metadata": {
-    "timestamp": "2023-04-01T00:41:02Z",
+    "timestamp": "2023-05-01T00:40:58Z",
     "tools": [
       {
         "vendor": "CycloneDX",
         "name": "cyclonedx-gomod",
-        "version": "v1.3.0",
+        "version": "v1.4.0",
         "hashes": [
           {
             "alg": "MD5",
-            "content": "4692c01d0d3f799dfd8a84298346a590"
+            "content": "176d8b13eb598709822f2cf28f13dcb0"
           },
           {
             "alg": "SHA-1",
-            "content": "cc03c8f6bc0c08b7ee125ff37ed0b3811c4c72c7"
+            "content": "1aefeaf968113f59c8b60f4c945daf8ca40244c5"
           },
           {
             "alg": "SHA-256",
-            "content": "0e9b69afe18579121e3bfa2da7d4a266caf95bf1748e0db0a70a6fde8c7c2418"
+            "content": "de7ff2ef3f736fcbfaf4a1a7d17af07c84fb8a3ec1368b9e72d85a3eb59aab08"
           },
           {
             "alg": "SHA-384",
-            "content": "f6758c69f50f0e42eaaa040575e14ee59373090f7227e781cb733cedfa823cec526be3ad834bf98944ee2e7bfc544284"
+            "content": "22c3b0fa2222ea8b28391a49b14d5f525b8ddedab8e28d6e0997be2aa0ee1e6eb23c73a797d60f3de485fd28c75454ca"
           },
           {
             "alg": "SHA-512",
-            "content": "58089c5fff88d2bd1f7cd616ac41a72bfebf7cbcc73fdd4fe1e1ce01c473646bb85a8c5ed1861137d0620c94610d49eb80ce97c637c786d2b52a139f70b99f0f"
+            "content": "c43f61cb8d3abb68e4d5bbdf2f3241dc0e9c77eae5d8ebd234fa6bc456ed43277751c1ebd253f1b95acfe5e5defd189570ea851dc24fecab895dd6ca899593b4"
           }
         ],
         "externalReferences": [
@@ -45,11 +46,11 @@
       }
     ],
     "component": {
-      "bom-ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20230201004741-0310c7ef1719?type=module",
+      "bom-ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20230401004102-2b646fd355b0?type=module",
       "type": "application",
       "name": "github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo",
-      "version": "v0.0.0-20230201004741-0310c7ef1719",
-      "purl": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20230201004741-0310c7ef1719?type=module",
+      "version": "v0.0.0-20230401004102-2b646fd355b0",
+      "purl": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20230401004102-2b646fd355b0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo",
@@ -80,7 +81,7 @@
           "content": "5656ca2a735f57c6c9cdeaa86b870e2aa3ba6d8af75a0299c4ef19d7afa1b0e3"
         }
       ],
-      "purl": "pkg:golang/github.com/beorn7/perks@v1.0.1?type=module",
+      "purl": "pkg:golang/github.com/beorn7/perks@v1.0.1?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/beorn7/perks",
@@ -109,7 +110,7 @@
           "content": "4a36761afbcea27a271cea4af3800f16e32fc6ab24ded10868a1ffcf8469bb78"
         }
       ],
-      "purl": "pkg:golang/github.com/c9s/goprocinfo@v0.0.0-20210130143923-c95fcf8c64a8?type=module",
+      "purl": "pkg:golang/github.com/c9s/goprocinfo@v0.0.0-20210130143923-c95fcf8c64a8?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/c9s/goprocinfo",
@@ -138,7 +139,7 @@
           "content": "e8c9d137c353efe601a54216c47b5e7c564e29300f8068e9412c6a2cd9f4faa6"
         }
       ],
-      "purl": "pkg:golang/github.com/cespare/xxhash/v2@v2.1.1?type=module",
+      "purl": "pkg:golang/github.com/cespare/xxhash/v2@v2.1.1?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/cespare/xxhash",
@@ -167,7 +168,7 @@
           "content": "2630995a955ba970ea1559937d858455330862b2ff34f74f4821cf2744ffada3"
         }
       ],
-      "purl": "pkg:golang/github.com/golang/protobuf@v1.4.3?type=module",
+      "purl": "pkg:golang/github.com/golang/protobuf@v1.4.3?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/golang/protobuf",
@@ -196,7 +197,7 @@
           "content": "8b8d1aa9f911d61d9294df61a23c15e5903dd7071714ebe474d21e1433f99282"
         }
       ],
-      "purl": "pkg:golang/github.com/gorilla/mux@v1.8.0?type=module",
+      "purl": "pkg:golang/github.com/gorilla/mux@v1.8.0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/gorilla/mux",
@@ -225,7 +226,7 @@
           "content": "e21a7d8e41f184c1e4aa4ac1dc8c748de812e6cc7f464a80465b1667aa48c225"
         }
       ],
-      "purl": "pkg:golang/github.com/matttproud/golang_protobuf_extensions@v1.0.1?type=module",
+      "purl": "pkg:golang/github.com/matttproud/golang_protobuf_extensions@v1.0.1?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/matttproud/golang_protobuf_extensions",
@@ -254,7 +255,7 @@
           "content": "1cd90b3801103080effcafb4e2bba4acbc7a721ee6b124707f7fd20121401ad4"
         }
       ],
-      "purl": "pkg:golang/github.com/prometheus/client_golang@v1.11.0?type=module",
+      "purl": "pkg:golang/github.com/prometheus/client_golang@v1.11.0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/prometheus/client_golang",
@@ -283,7 +284,7 @@
           "content": "baae61d1df86bb18972c92cd001320a76a945833e22ef802cf3d9d511fbf5bf3"
         }
       ],
-      "purl": "pkg:golang/github.com/prometheus/client_model@v0.2.0?type=module",
+      "purl": "pkg:golang/github.com/prometheus/client_model@v0.2.0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/prometheus/client_model",
@@ -312,7 +313,7 @@
           "content": "88c0244b64c3a0d5a728cf8aa299f1ffcb67112b487e9600d2eaf4c50cf384c4"
         }
       ],
-      "purl": "pkg:golang/github.com/prometheus/common@v0.26.0?type=module",
+      "purl": "pkg:golang/github.com/prometheus/common@v0.26.0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/prometheus/common",
@@ -341,7 +342,7 @@
           "content": "9b1cb82f68cfeaa3289ea9aaf9a4ed3b1d627d5594806fd30269ed81b877c6fe"
         }
       ],
-      "purl": "pkg:golang/github.com/prometheus/procfs@v0.6.0?type=module",
+      "purl": "pkg:golang/github.com/prometheus/procfs@v0.6.0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/prometheus/procfs",
@@ -370,7 +371,7 @@
           "content": "3f628ccdc170acfa128e417558b44fb29dd430bcaa97c2f8bfd850a5578ae6ca"
         }
       ],
-      "purl": "pkg:golang/github.com/rs/cors@v1.8.0?type=module",
+      "purl": "pkg:golang/github.com/rs/cors@v1.8.0?type=module\u0026goos=darwin\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/rs/cors",
@@ -399,7 +400,7 @@
           "content": "256832675aa0753685dcdde8c42f8c75357baaf104807a37a2d8fe1c1e4233b4"
         }
       ],
-      "purl": "pkg:golang/golang.org/x/sys@v0.0.0-20210603081109-ebe580a85c40?type=module",
+      "purl": "pkg:golang/golang.org/x/sys@v0.0.0-20210603081109-ebe580a85c40?type=module\u0026goos=darwin\u0026goarch=amd64",
       "evidence": {
         "licenses": [
           {
@@ -422,7 +423,7 @@
           "content": "ed09c84291911c4e519cb2a71127c3a319b67536a94d9b9ae5ad244b403e5574"
         }
       ],
-      "purl": "pkg:golang/google.golang.org/protobuf@v1.26.0-rc.1?type=module",
+      "purl": "pkg:golang/google.golang.org/protobuf@v1.26.0-rc.1?type=module\u0026goos=darwin\u0026goarch=amd64",
       "evidence": {
         "licenses": [
           {
@@ -436,7 +437,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20230201004741-0310c7ef1719?type=module",
+      "ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20230401004102-2b646fd355b0?type=module",
       "dependsOn": [
         "pkg:golang/github.com/c9s/goprocinfo@v0.0.0-20210130143923-c95fcf8c64a8?type=module",
         "pkg:golang/github.com/gorilla/mux@v1.8.0?type=module",

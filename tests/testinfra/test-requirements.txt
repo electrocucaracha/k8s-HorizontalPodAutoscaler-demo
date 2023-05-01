@@ -4,19 +4,17 @@
 #
 #    pip-compile --output-file=tests/testinfra/test-requirements.txt tests/testinfra/test-requirements.in
 #
-attrs==22.2.0
-    # via pytest
 bcrypt==4.0.1
     # via paramiko
 cffi==1.15.1
     # via
     #   cryptography
     #   pynacl
-cryptography==40.0.1
+cryptography==40.0.2
     # via paramiko
 iniconfig==2.0.0
     # via pytest
-packaging==23.0
+packaging==23.1
     # via pytest
 paramiko==3.1.0
     # via -r tests/testinfra/test-requirements.in
@@ -26,7 +24,7 @@ pycparser==2.21
     # via cffi
 pynacl==1.5.0
     # via paramiko
-pytest==7.2.2
+pytest==7.3.1
     # via pytest-testinfra
 pytest-testinfra==7.0.0
     # via -r tests/testinfra/test-requirements.in
