@@ -23,7 +23,7 @@ kubeadmConfigPatches:
         horizontal-pod-autoscaler-downscale-stabilization: "15s"
 nodes:
   - role: control-plane
-    image: kindest/node:v1.27.1
+    image: kindest/node:v1.27.2
     extraPortMappings:
       - containerPort: 30001
         hostPort: 9001
