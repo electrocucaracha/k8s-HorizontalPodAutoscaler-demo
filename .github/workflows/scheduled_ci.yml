@@ -21,7 +21,7 @@ jobs:
     env:
       VAGRANT_DISABLE_VBOXSYMLINKCREATE: 1
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - name: Cache Vagrant boxes
         uses: actions/cache@v3
         with:
