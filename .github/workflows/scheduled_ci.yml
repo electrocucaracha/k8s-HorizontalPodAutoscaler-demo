@@ -17,7 +17,7 @@ on:
 
 jobs:
   check-e2e:
-    runs-on: macos-12
+    runs-on: vm-self-hosted
     env:
       VAGRANT_DISABLE_VBOXSYMLINKCREATE: 1
     steps:
@@ -31,10 +31,8 @@ jobs:
             ${{ runner.os }}-vagrant-
       - name: Replace shorten links
         run: |
-          find . -type f -not -path ./.github/\* -exec sed -i '.bak' 's|http://bit.ly/install_pkg|https://raw.githubusercontent.com/electrocucaracha/pkg-mgr_scripts/master/install.sh|g' {} \;
+          find . -type f -not -path ./.github/\* -exec sed -i 's|http://bit.ly/install_pkg|https://raw.githubusercontent.com/electrocucaracha/pkg-mgr_scripts/master/install.sh|g' {} \;
           find . -type f -name "*.bak" -delete
-      - name: Install vagrant tool
-        run: brew install vagrant
       - name: Deploy services
         run: vagrant up
       - uses: actions/setup-python@v5
