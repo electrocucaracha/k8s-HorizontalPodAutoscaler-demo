@@ -23,9 +23,9 @@ jobs:
     name: Check scripts format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
       - name: Run the sh-checker
-        uses: luizm/action-sh-checker@master
+        uses: luizm/action-sh-checker@17bd25a6ee188d2b91f677060038f4ba37ba14b2 # 0.9.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHFMT_OPTS: -i 4 -s
@@ -37,7 +37,7 @@ jobs:
     env:
       DEBUG: true
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
       - name: Run assertions
         run: |
           ./scripts/integration_test.sh
@@ -47,7 +47,7 @@ jobs:
     env:
       DEBUG: true
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
       - name: Install dependencies
         run: ./scripts/install.sh
       - name: Deploy services
