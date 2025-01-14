@@ -34,7 +34,7 @@ lint:
 	-e LINTER_RULES_PATH=/ \
 	-e VALIDATE_KUBERNETES_KUBEVAL=false \
 	-e KUBERNETES_KUBECONFORM_OPTIONS='-ignore-missing-schemas' \
-	github/super-linter
+	ghcr.io/super-linter/super-linter
 	tox -e lint
 
 .PHONY: fmt
