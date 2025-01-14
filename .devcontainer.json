@@ -1,16 +1,16 @@
 {
-    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04",
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:1": {},
-        "ghcr.io/electrocucaracha/pkg-mgr_scripts/kubectl:latest": {},
-        "ghcr.io/electrocucaracha/pkg-mgr_scripts/helm:latest": {},
-        "ghcr.io/electrocucaracha/pkg-mgr_scripts/kind:latest": {}
-    },
-    "hostRequirements": {
-        "cpus": 4,
-        "memory": "8gb"
-    },
-    "postCreateCommand": "./scripts/install.sh",
-    "forwardPorts": [9001],
-    "postStartCommand": "./scripts/deploy.sh"
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {},
+    "ghcr.io/electrocucaracha/pkg-mgr_scripts/kubectl:latest": {},
+    "ghcr.io/electrocucaracha/pkg-mgr_scripts/helm:latest": {},
+    "ghcr.io/electrocucaracha/pkg-mgr_scripts/kind:latest": {}
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb"
+  },
+  "postCreateCommand": "./scripts/install.sh",
+  "forwardPorts": [9001],
+  "postStartCommand": "./scripts/deploy.sh"
 }

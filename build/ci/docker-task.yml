@@ -1,4 +1,3 @@
----
 # SPDX-license-identifier: Apache-2.0
 ##############################################################################
 # Copyright (c)
@@ -11,21 +10,16 @@
 # the following vars must be specified:
 # #
 # #   ((make_action))                   the make action to be executed (build,integration-test)
-
 platform: linux
-
 image_resource:
   type: docker-image
   source:
     repository: amidos/dcind
     tag: 2.1.0
-
 inputs:
   - name: src
-
 params:
   MAKE_ACTION: ((.:make_action))
-
 run:
   path: bash
   args:

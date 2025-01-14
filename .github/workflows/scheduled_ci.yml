@@ -1,4 +1,3 @@
----
 # SPDX-license-identifier: Apache-2.0
 ##############################################################################
 # Copyright (c) 2021
@@ -7,14 +6,12 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-
 name: Scheduled End-to-End verification
 # yamllint disable-line rule:truthy
 on:
   schedule:
-    - cron: '0 0 * * 5'
+    - cron: "0 0 * * 5"
   workflow_dispatch:
-
 jobs:
   check-e2e:
     runs-on: vm-self-hosted
@@ -37,7 +34,7 @@ jobs:
         run: vagrant up
       - uses: actions/setup-python@v5
         with:
-          python-version: '^3.10'
+          python-version: "^3.10"
       - name: Install testinfra dependencies
         run: pip install -r tests/testinfra/test-requirements.txt
       - name: Verify services

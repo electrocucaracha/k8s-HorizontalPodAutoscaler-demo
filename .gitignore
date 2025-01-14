@@ -3,3 +3,5 @@
 .*.swp
 super-linter.log
 *.pyc
+node_modules/
+package*.json

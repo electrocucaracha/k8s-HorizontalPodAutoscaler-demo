@@ -456,18 +456,14 @@
     },
     {
       "ref": "pkg:golang/github.com/golang/protobuf@v1.5.3?type=module",
-      "dependsOn": [
-        "pkg:golang/google.golang.org/protobuf@v1.30.0?type=module"
-      ]
+      "dependsOn": ["pkg:golang/google.golang.org/protobuf@v1.30.0?type=module"]
     },
     {
       "ref": "pkg:golang/github.com/gorilla/mux@v1.8.0?type=module"
     },
     {
       "ref": "pkg:golang/github.com/matttproud/golang_protobuf_extensions@v1.0.4?type=module",
-      "dependsOn": [
-        "pkg:golang/github.com/golang/protobuf@v1.5.3?type=module"
-      ]
+      "dependsOn": ["pkg:golang/github.com/golang/protobuf@v1.5.3?type=module"]
     },
     {
       "ref": "pkg:golang/github.com/prometheus/client_golang@v1.16.0?type=module",
@@ -485,9 +481,7 @@
     },
     {
       "ref": "pkg:golang/github.com/prometheus/client_model@v0.3.0?type=module",
-      "dependsOn": [
-        "pkg:golang/github.com/golang/protobuf@v1.5.3?type=module"
-      ]
+      "dependsOn": ["pkg:golang/github.com/golang/protobuf@v1.5.3?type=module"]
     },
     {
       "ref": "pkg:golang/github.com/prometheus/common@v0.42.0?type=module",
@@ -505,9 +499,7 @@
     },
     {
       "ref": "pkg:golang/github.com/prometheus/procfs@v0.10.1?type=module",
-      "dependsOn": [
-        "pkg:golang/golang.org/x/sys@v0.8.0?type=module"
-      ]
+      "dependsOn": ["pkg:golang/golang.org/x/sys@v0.8.0?type=module"]
     },
     {
       "ref": "pkg:golang/github.com/rs/cors@v1.9.0?type=module"
@@ -517,9 +509,7 @@
     },
     {
       "ref": "pkg:golang/google.golang.org/protobuf@v1.30.0?type=module",
-      "dependsOn": [
-        "pkg:golang/github.com/golang/protobuf@v1.5.3?type=module"
-      ]
+      "dependsOn": ["pkg:golang/github.com/golang/protobuf@v1.5.3?type=module"]
     }
   ]
 }

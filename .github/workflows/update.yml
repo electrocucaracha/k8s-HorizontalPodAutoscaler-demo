@@ -1,4 +1,3 @@
----
 # SPDX-license-identifier: Apache-2.0
 ##############################################################################
 # Copyright (c) 2021
@@ -7,35 +6,33 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-
 name: Scheduled Versions verification
 # yamllint disable-line rule:truthy
 on:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: "0 0 1 * *"
   workflow_dispatch:
-
 jobs:
   check-versions:
     permissions:
-      contents: write  # for technote-space/create-pr-action to push code
-      pull-requests: write  # for technote-space/create-pr-action to create a PR
+      contents: write # for technote-space/create-pr-action to push code
+      pull-requests: write # for technote-space/create-pr-action to create a PR
     runs-on: vm-self-hosted
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: actions/setup-python@v5
         with:
-          python-version: '^3.10'
+          python-version: "^3.10"
       - uses: actions/setup-go@v5
         with:
-          go-version: '^1.20'
+          go-version: "^1.20"
       - uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: |
             pip install -U pip-tools
             pip-compile --output-file=tests/testinfra/test-requirements.txt --upgrade tests/testinfra/test-requirements.in
             ./ci/update_versions.sh
-          COMMIT_MESSAGE: 'Upgrade versions files'
-          COMMIT_NAME: 'electrocucaracha bot'
+          COMMIT_MESSAGE: "Upgrade versions files"
+          COMMIT_NAME: "electrocucaracha bot"
           PR_BRANCH_NAME: "versions-update-${PR_ID}"
-          PR_TITLE: 'chore: update versions'
+          PR_TITLE: "chore: update versions"

@@ -1,5 +1,7 @@
 # Kubernetes Horizontal Pod Autoscaler
+
 <!-- markdown-link-check-disable-next-line -->
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
@@ -11,9 +13,9 @@ feature.
 
 The [k6.yml](tests/k6.yml) provides a traffic simulator which
 generates virtual users, those users perform HTTP requests against the
-web server. The *Prometheus* instance collects custom metrics which
-are aggreated by *Prometheus Adapter* and consumed by *Horizontal Pod
-Autoscaler*, this last component triggers actions to scale out/in
+web server. The _Prometheus_ instance collects custom metrics which
+are aggreated by _Prometheus Adapter_ and consumed by _Horizontal Pod
+Autoscaler_, this last component triggers actions to scale out/in
 replicas in order to distribute the workload.
 
 ![Dashboard](img/diagram.png)
@@ -21,7 +23,7 @@ replicas in order to distribute the workload.
 ## Virtual Machines
 
 The [Vagrant tool][2] can be used for provisioning an Ubuntu Focal
-Virtual Machine. It's highly recommended to use the  *setup.sh* script
+Virtual Machine. It's highly recommended to use the _setup.sh_ script
 of the [bootstrap-vagrant project][3] for installing Vagrant
 dependencies and plugins required for this project. That script
 supports two Virtualization providers (Libvirt and VirtualBox) which
