@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # 4.2.2
       - name: Check broken links
-        uses: gaurav-nelson/github-action-markdown-link-check@d53a906aa6b22b8979d33bc86170567e619495ec # 1.0.15
+        uses: gaurav-nelson/github-action-markdown-link-check@636e17b35a5803e014b7272d9e46a8262705416a # 1.0.16
   check-super-linter:
     runs-on: ubuntu-latest
     steps:
