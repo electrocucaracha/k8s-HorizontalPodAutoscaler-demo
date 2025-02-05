@@ -51,7 +51,7 @@ EOT
 if command -v go >/dev/null; then
     rm go.*
     go mod init github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo
-    go mod tidy -go="$(curl -sL https://golang.org/VERSION?m=text | sed 's/go//;s/\..$//')"
+    go mod tidy -go="$(curl -sL https://golang.org/VERSION?m=text | sed -n 's/go//;s/\..$//;1p')"
     GOPATH=$(go env GOPATH)
     if [ ! -f "$GOPATH/bin/cyclonedx-gomod" ]; then
         go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
