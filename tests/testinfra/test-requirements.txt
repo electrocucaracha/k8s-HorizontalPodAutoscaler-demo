@@ -4,13 +4,13 @@
 #
 #    pip-compile --output-file=tests/testinfra/test-requirements.txt tests/testinfra/test-requirements.in
 #
-bcrypt==4.2.1
+bcrypt==4.3.0
     # via paramiko
 cffi==1.17.1
     # via
     #   cryptography
     #   pynacl
-cryptography==44.0.0
+cryptography==44.0.1
     # via paramiko
 iniconfig==2.0.0
     # via pytest
