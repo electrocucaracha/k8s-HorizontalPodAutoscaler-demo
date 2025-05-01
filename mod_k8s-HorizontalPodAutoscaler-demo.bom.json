@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:9a8ad5a9-c84c-4e5a-8ccd-05c475c378c6",
+  "serialNumber": "urn:uuid:52427df5-ef0b-41dd-bd2e-e2204dfbd2bb",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-01T01:16:29Z",
+    "timestamp": "2025-05-01T01:23:37Z",
     "tools": [
       {
         "vendor": "CycloneDX",
@@ -14,23 +14,23 @@
         "hashes": [
           {
             "alg": "MD5",
-            "content": "dc10028340253c49da8f4d3274b24893"
+            "content": "6e94016e90ec6dff219014ac38ca40cc"
           },
           {
             "alg": "SHA-1",
-            "content": "bc78f5dab0b70119d900a674e29c4729b7f2ff47"
+            "content": "3b6bf06dcb13f5699ffd6572653ed53a88b10e00"
           },
           {
             "alg": "SHA-256",
-            "content": "c28fe7c4fb75da24bba0408a27ae405a86108dfe27ef7abd42763fe1c98d1d8f"
+            "content": "c89d4cce1ac569cf74d985238753449aebec6ec8720789eb229715a8c6127470"
           },
           {
             "alg": "SHA-384",
-            "content": "093c5a756de7fc82304562ad79eb9a28a75b32a8d22eb2c0d10654f624bdc4a2043d5162823c76a93f95b38b4d39f746"
+            "content": "4564d206719e2871711973a7d493a6012de54b2cea084481a6d0b6a0f2c5c17aacc25807783775dff47ccbf82c7dd4ce"
           },
           {
             "alg": "SHA-512",
-            "content": "5bab297c754e4ca797f9b2e109ff52fad3b1a8f5d9205a5df2274a4c94b9d68b93ce35c302febbb6fb7b0e678dc1efcdf4db8a60b61228c101c4cccd9d5abf77"
+            "content": "052b88e1a8cce0cee6c1a5dba6418b542921323793f9d22176ddb11da7b43731c72d82c11a6a73337113a6682f3c7ed87a1ca58fd282e24058baa530546a907e"
           }
         ],
         "externalReferences": [
@@ -46,11 +46,11 @@
       }
     ],
     "component": {
-      "bom-ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20250205004332-d7d3721a98c9?type=module",
+      "bom-ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20250301011640-f24fee7e2d70?type=module",
       "type": "application",
       "name": "github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo",
-      "version": "v0.0.0-20250205004332-d7d3721a98c9",
-      "purl": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20250205004332-d7d3721a98c9?type=module\u0026goos=linux\u0026goarch=amd64",
+      "version": "v0.0.0-20250301011640-f24fee7e2d70",
+      "purl": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20250301011640-f24fee7e2d70?type=module\u0026goos=linux\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo",
@@ -186,35 +186,6 @@
       }
     },
     {
-      "bom-ref": "pkg:golang/github.com/klauspost/compress@v1.17.11?type=module",
-      "type": "library",
-      "name": "github.com/klauspost/compress",
-      "version": "v1.17.11",
-      "scope": "required",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "227eb12e9c963a2d7e0bbb575145afda8b7542f063c5ebca01a23a217ac99947"
-        }
-      ],
-      "purl": "pkg:golang/github.com/klauspost/compress@v1.17.11?type=module\u0026goos=linux\u0026goarch=amd64",
-      "externalReferences": [
-        {
-          "url": "https://github.com/klauspost/compress",
-          "type": "vcs"
-        }
-      ],
-      "evidence": {
-        "licenses": [
-          {
-            "license": {
-              "id": "Apache-2.0"
-            }
-          }
-        ]
-      }
-    },
-    {
       "bom-ref": "pkg:golang/github.com/munnerz/goautoneg@v0.0.0-20191010083416-a7dc8b61c822?type=module",
       "type": "library",
       "name": "github.com/munnerz/goautoneg",
@@ -244,18 +215,18 @@
       }
     },
     {
-      "bom-ref": "pkg:golang/github.com/prometheus/client_golang@v1.21.0?type=module",
+      "bom-ref": "pkg:golang/github.com/prometheus/client_golang@v1.22.0?type=module",
       "type": "library",
       "name": "github.com/prometheus/client_golang",
-      "version": "v1.21.0",
+      "version": "v1.22.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0c8b1a1a689a06449a9e006032d59d35fc5b30d764bb920aea2361ac4a96bdd0"
+          "content": "adbf77a7d96890512c72d4f2b38e959d5d642c20e9559d1afd8f76566d1973a4"
         }
       ],
-      "purl": "pkg:golang/github.com/prometheus/client_golang@v1.21.0?type=module\u0026goos=linux\u0026goarch=amd64",
+      "purl": "pkg:golang/github.com/prometheus/client_golang@v1.22.0?type=module\u0026goos=linux\u0026goarch=amd64",
       "externalReferences": [
         {
           "url": "https://github.com/prometheus/client_golang",
@@ -389,18 +360,18 @@
       }
     },
     {
-      "bom-ref": "pkg:golang/golang.org/x/sys@v0.28.0?type=module",
+      "bom-ref": "pkg:golang/golang.org/x/sys@v0.30.0?type=module",
       "type": "library",
       "name": "golang.org/x/sys",
-      "version": "v0.28.0",
+      "version": "v0.30.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "164b28bbb5044145a52af21db2acc99949825f7719b83dbe3f75f2cb3c0c8650"
+          "content": "423912c0fff7e9adb48c5616912b9ed58c17ccb9ac57919fabb122cbbd82d6e7"
         }
       ],
-      "purl": "pkg:golang/golang.org/x/sys@v0.28.0?type=module\u0026goos=linux\u0026goarch=amd64",
+      "purl": "pkg:golang/golang.org/x/sys@v0.30.0?type=module\u0026goos=linux\u0026goarch=amd64",
       "evidence": {
         "licenses": [
           {
@@ -412,18 +383,18 @@
       }
     },
     {
-      "bom-ref": "pkg:golang/google.golang.org/protobuf@v1.36.1?type=module",
+      "bom-ref": "pkg:golang/google.golang.org/protobuf@v1.36.5?type=module",
       "type": "library",
       "name": "google.golang.org/protobuf",
-      "version": "v1.36.1",
+      "version": "v1.36.5",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c813de46f4dfb5a95e2203373d9fd604867b5ccfde11801a1320b0bf28eafe09"
+          "content": "b4f86bfb0a126e37d8bd8ebf18fb9f528622cf1c35705ff2168c49d9f9a9c253"
         }
       ],
-      "purl": "pkg:golang/google.golang.org/protobuf@v1.36.1?type=module\u0026goos=linux\u0026goarch=amd64",
+      "purl": "pkg:golang/google.golang.org/protobuf@v1.36.5?type=module\u0026goos=linux\u0026goarch=amd64",
       "evidence": {
         "licenses": [
           {
@@ -437,11 +408,11 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20250205004332-d7d3721a98c9?type=module",
+      "ref": "pkg:golang/github.com/electrocucaracha/k8s-HorizontalPodAutoscaler-demo@v0.0.0-20250301011640-f24fee7e2d70?type=module",
       "dependsOn": [
         "pkg:golang/github.com/c9s/goprocinfo@v0.0.0-20210130143923-c95fcf8c64a8?type=module",
         "pkg:golang/github.com/gorilla/mux@v1.8.1?type=module",
-        "pkg:golang/github.com/prometheus/client_golang@v1.21.0?type=module",
+        "pkg:golang/github.com/prometheus/client_golang@v1.22.0?type=module",
         "pkg:golang/github.com/rs/cors@v1.11.1?type=module"
       ]
     },
@@ -458,28 +429,24 @@
       "ref": "pkg:golang/github.com/gorilla/mux@v1.8.1?type=module"
     },
     {
-      "ref": "pkg:golang/github.com/klauspost/compress@v1.17.11?type=module"
-    },
-    {
       "ref": "pkg:golang/github.com/munnerz/goautoneg@v0.0.0-20191010083416-a7dc8b61c822?type=module"
     },
     {
-      "ref": "pkg:golang/github.com/prometheus/client_golang@v1.21.0?type=module",
+      "ref": "pkg:golang/github.com/prometheus/client_golang@v1.22.0?type=module",
       "dependsOn": [
         "pkg:golang/github.com/beorn7/perks@v1.0.1?type=module",
         "pkg:golang/github.com/cespare/xxhash/v2@v2.3.0?type=module",
-        "pkg:golang/github.com/klauspost/compress@v1.17.11?type=module",
         "pkg:golang/github.com/munnerz/goautoneg@v0.0.0-20191010083416-a7dc8b61c822?type=module",
         "pkg:golang/github.com/prometheus/client_model@v0.6.1?type=module",
         "pkg:golang/github.com/prometheus/common@v0.62.0?type=module",
         "pkg:golang/github.com/prometheus/procfs@v0.15.1?type=module",
-        "pkg:golang/golang.org/x/sys@v0.28.0?type=module",
-        "pkg:golang/google.golang.org/protobuf@v1.36.1?type=module"
+        "pkg:golang/golang.org/x/sys@v0.30.0?type=module",
+        "pkg:golang/google.golang.org/protobuf@v1.36.5?type=module"
       ]
     },
     {
       "ref": "pkg:golang/github.com/prometheus/client_model@v0.6.1?type=module",
-      "dependsOn": ["pkg:golang/google.golang.org/protobuf@v1.36.1?type=module"]
+      "dependsOn": ["pkg:golang/google.golang.org/protobuf@v1.36.5?type=module"]
     },
     {
       "ref": "pkg:golang/github.com/prometheus/common@v0.62.0?type=module",
@@ -487,25 +454,25 @@
         "pkg:golang/github.com/beorn7/perks@v1.0.1?type=module",
         "pkg:golang/github.com/cespare/xxhash/v2@v2.3.0?type=module",
         "pkg:golang/github.com/munnerz/goautoneg@v0.0.0-20191010083416-a7dc8b61c822?type=module",
-        "pkg:golang/github.com/prometheus/client_golang@v1.21.0?type=module",
+        "pkg:golang/github.com/prometheus/client_golang@v1.22.0?type=module",
         "pkg:golang/github.com/prometheus/client_model@v0.6.1?type=module",
         "pkg:golang/github.com/prometheus/procfs@v0.15.1?type=module",
-        "pkg:golang/golang.org/x/sys@v0.28.0?type=module",
-        "pkg:golang/google.golang.org/protobuf@v1.36.1?type=module"
+        "pkg:golang/golang.org/x/sys@v0.30.0?type=module",
+        "pkg:golang/google.golang.org/protobuf@v1.36.5?type=module"
       ]
     },
     {
       "ref": "pkg:golang/github.com/prometheus/procfs@v0.15.1?type=module",
-      "dependsOn": ["pkg:golang/golang.org/x/sys@v0.28.0?type=module"]
+      "dependsOn": ["pkg:golang/golang.org/x/sys@v0.30.0?type=module"]
     },
     {
       "ref": "pkg:golang/github.com/rs/cors@v1.11.1?type=module"
     },
     {
-      "ref": "pkg:golang/golang.org/x/sys@v0.28.0?type=module"
+      "ref": "pkg:golang/golang.org/x/sys@v0.30.0?type=module"
     },
     {
-      "ref": "pkg:golang/google.golang.org/protobuf@v1.36.1?type=module"
+      "ref": "pkg:golang/google.golang.org/protobuf@v1.36.5?type=module"
     }
   ]
 }
