@@ -10,7 +10,7 @@ cffi==1.17.1
     # via
     #   cryptography
     #   pynacl
-cryptography==45.0.4
+cryptography==45.0.5
     # via paramiko
 iniconfig==2.1.0
     # via pytest
