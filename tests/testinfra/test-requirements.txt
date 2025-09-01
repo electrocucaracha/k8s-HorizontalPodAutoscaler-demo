@@ -10,13 +10,15 @@ cffi==1.17.1
     # via
     #   cryptography
     #   pynacl
-cryptography==45.0.5
+cryptography==45.0.6
     # via paramiko
 iniconfig==2.1.0
     # via pytest
+invoke==2.2.0
+    # via paramiko
 packaging==25.0
     # via pytest
-paramiko==3.5.1
+paramiko==4.0.0
     # via -r tests/testinfra/test-requirements.in
 pluggy==1.6.0
     # via pytest
