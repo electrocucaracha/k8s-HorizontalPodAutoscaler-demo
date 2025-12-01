@@ -12,35 +12,35 @@ set -o pipefail
 set -o errexit
 set -o nounset
 if [[ ${DEBUG:-false} == "true" ]]; then
-	set -o xtrace
+    set -o xtrace
 fi
 
 function print_stats {
-	set +o xtrace
-	printf "CPU usage: "
-	grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage " %"}'
-	printf "Memory free(Kb):"
-	awk -v low="$(grep low /proc/zoneinfo | awk '{k+=$2}END{print k}')" '{a[$1]=$2}  END{ print a["MemFree:"]+a["Active(file):"]+a["Inactive(file):"]+a["SReclaimable:"]-(12*low);}' /proc/meminfo
-	if command -v kubectl; then
-		for namespace in default ingress-nginx; do
-			echo "Kubernetes Events ($namespace):"
-			kubectl alpha events -n "$namespace"
-			echo "Kubernetes Resources ($namespace):"
-			kubectl get all -n "$namespace" -o wide
-		done
-		echo "Kubernetes Pods:"
-		kubectl describe pods
-		echo "Kubernetes Nodes:"
-		kubectl describe nodes
-	fi
-	exit 1
+    set +o xtrace
+    printf "CPU usage: "
+    grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage " %"}'
+    printf "Memory free(Kb):"
+    awk -v low="$(grep low /proc/zoneinfo | awk '{k+=$2}END{print k}')" '{a[$1]=$2}  END{ print a["MemFree:"]+a["Active(file):"]+a["Inactive(file):"]+a["SReclaimable:"]-(12*low);}' /proc/meminfo
+    if command -v kubectl; then
+        for namespace in default ingress-nginx; do
+            echo "Kubernetes Events ($namespace):"
+            kubectl alpha events -n "$namespace"
+            echo "Kubernetes Resources ($namespace):"
+            kubectl get all -n "$namespace" -o wide
+        done
+        echo "Kubernetes Pods:"
+        kubectl describe pods
+        echo "Kubernetes Nodes:"
+        kubectl describe nodes
+    fi
+    exit 1
 }
 
 trap print_stats ERR
 
 # Create website image
 if [ -z "$(sudo docker images electrocucaracha/web:1.0 -q)" ]; then
-	make build
+    make build
 fi
 sudo kind load docker-image electrocucaracha/web:1.0
 
